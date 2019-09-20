@@ -1,0 +1,26 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}  
+
+th, td {
+    border: 1px solid black;
+}
+
+td > input{
+    width: 90%;
+    border-radius: 10px;
+    background-color: #66b5ff;
+}
+
+span{
+    color: red;
+}
+
+div{
+    padding-bottom: 10px;
+}
+
+input#btn{
+    margin-bottom: 10px;
+}

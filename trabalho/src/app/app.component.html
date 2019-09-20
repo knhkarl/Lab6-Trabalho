@@ -1,0 +1,65 @@
+<h1>Trabalho 1</h1>
+<form #carForm="ngForm">
+  <div>
+    <label>Tipo: </label>
+    <select id="tipo" name="tipo" [(ngModel)]="newCar.tipo" required #tipo="ngModel">
+      <option value="carro">Carro</option>
+      <option value="moto">Moto</option>
+    </select>
+    <span *ngIf="tipo.invalid && tipo.dirty">Campo Obrigatório</span>
+  </div>
+
+  <div>
+    <label>Marca: </label>
+    <input type="text" id="marca" name="marca" [(ngModel)]="newCar.marca" required #marca="ngModel"/>
+    <span *ngIf="marca.invalid && marca.dirty">Campo Obrigatório</span>
+  </div>
+
+  <div>
+    <label>Modelo: </label>
+    <input type="text" id="modelo" name="modelo" [(ngModel)]="newCar.modelo" required #modelo="ngModel"/>
+    <span *ngIf="modelo.invalid && modelo.dirty">Campo Obrigatório</span>
+  </div>
+
+  <div>
+    <label>Cor: </label>
+    <input type="text" id="cor" name="cor" [(ngModel)]="newCar.cor" required #cor="ngModel"/>
+    <span *ngIf="cor.invalid && cor.dirty">Campo Obrigatório</span>
+  </div>
+
+  <div>
+    <label>Ano Fabricação:</label>
+    <input type="number" id="ano" name="ano" [(ngModel)]="newCar.ano" required #ano="ngModel">
+    <span *ngIf="ano.invalid && ano.dirty">Campo obrigatório</span>  
+  </div>
+
+  <input type="button" id="btn" value="Salvar" (click)="saveCar()" [disabled]="carForm.invalid"/>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Cor</th>
+      <th>Ano Fabricação</th>
+      <th>Editar</th>
+      <th>Deletar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="car.length === 0">
+      <td colspan="7">Nenhum veículo cadastrado</td>
+    </tr>
+    <tr *ngFor="let cr of car" [ngStyle]="{'background-color': cr.tipo === 'carro'? '#3368FF' : '#33FF4F'}">
+      <td>{{ cr.tipo }}</td>
+      <td>{{ cr.marca }}</td>
+      <td>{{ cr.modelo }}</td>
+      <td>{{ cr.cor }}</td>
+      <td>{{ cr.ano }}</td>
+      <td align=center><input type="button" value="Edit" (click)="edit(cr)"/></td>
+      <td align=center><input type="button" value="Delete" (click)="delete(cr)"/></td>
+    </tr>
+  </tbody>
+</table>
